@@ -39,7 +39,7 @@ class DBManager:
         db = sqlite3.connect(DB_NAME)
         cdb = db.cursor()
 
-        cdb.execute(f"INSERT INTO links VALUES ('{short_url}', '{original_url}', 0);")
+        cdb.execute(f"INSERT INTO links VALUES ('{short_url}', '{original_url}');")
         db.commit()
 
         cdb.close()
@@ -53,8 +53,7 @@ class DBManager:
         cdb.execute('''
         CREATE TABLE IF NOT EXISTS links 
             (short TEXT PRIMARY KEY,
-             original TEXT,
-             counter INTEGER);
+             original TEXT);
         ''')
         db.commit()
 
